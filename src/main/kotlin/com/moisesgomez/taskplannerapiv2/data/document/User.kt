@@ -25,5 +25,5 @@ data class User(
         userDto.fullName,
         userDto.email,
         BCrypt.hashpw(userDto.password, BCrypt.gensalt()),
-        listOf(RoleEnum.ADMIN))
+        listOf(RoleEnum.USER))
 }

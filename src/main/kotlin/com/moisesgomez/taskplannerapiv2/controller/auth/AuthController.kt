@@ -1,5 +1,6 @@
 package com.moisesgomez.taskplannerapiv2.controller.auth
 
+import com.moisesgomez.taskplannerapiv2.data.document.RoleEnum
 import com.moisesgomez.taskplannerapiv2.data.document.User
 import com.moisesgomez.taskplannerapiv2.data.dto.LoginDto
 import com.moisesgomez.taskplannerapiv2.data.dto.TokenDto
@@ -44,6 +45,7 @@ class AuthController(
     private fun generateAppToken(userId: String, expirationDate: Date): String {
         return Jwts.builder()
             .setSubject(userId)
+            .claim(CLAIMS_ROLES_KEY, listOf(RoleEnum.ADMIN))
             .setIssuedAt(Date())
             .setExpiration(expirationDate)
             .signWith(SignatureAlgorithm.HS256, secret)

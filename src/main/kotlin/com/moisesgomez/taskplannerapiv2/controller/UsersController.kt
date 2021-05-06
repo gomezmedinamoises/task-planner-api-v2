@@ -14,7 +14,6 @@ import javax.annotation.security.RolesAllowed
 class UsersController(@Autowired val usersService: UsersService) {
 
     @PostMapping
-    @RolesAllowed(ADMIN_ROLE)
     fun create(@RequestBody userDto: UserDto): User {
         return usersService.save(userDto)
     }
