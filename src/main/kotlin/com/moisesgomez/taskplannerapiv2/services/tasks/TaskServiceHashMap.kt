@@ -4,6 +4,7 @@ import com.moisesgomez.taskplannerapiv2.controller.dto.TaskDto
 import com.moisesgomez.taskplannerapiv2.data.document.Task
 import java.util.concurrent.atomic.AtomicLong
 
+// Class without service annotation
 class TaskServiceHashMap : TasksService {
 
     private val tasks = HashMap<String, Task>()
