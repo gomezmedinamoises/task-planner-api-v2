@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/v1/tasks")
 class TasksController(@Autowired val tasksService: TasksService) {
 
     @PostMapping
@@ -26,13 +26,18 @@ class TasksController(@Autowired val tasksService: TasksService) {
         return tasksService.findTaskById(id) ?: throw TaskNotFoundException()
     }
 
+    /*@GetMapping("/{responsible}")
+    fun findTaskByResponsible(@PathVariable responsible: String): Task? {
+        return tasksService.findByResponsible(responsible) ?: throw TaskNotFoundException()
+    }*/
+
     @PutMapping("/{id}")
     fun update(@PathVariable id: String, @RequestBody taskDto: TaskDto): Task? {
         return tasksService.update(id, taskDto)
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: String): Boolean {
+    fun delete(@PathVariable id: String) {
         return tasksService.delete(id)
     }
 }

@@ -11,7 +11,9 @@ interface TasksService {
 
     fun findTaskById(taskId: String): Task?
 
+    fun findByResponsible(responsible: String): Task?
+
     fun all(): List<Task>
 
-    fun delete(taskId: String): Boolean
+    fun delete(taskId: String)
 }
