@@ -3,6 +3,7 @@ package com.moisesgomez.taskplannerapiv2.services.users
 import com.moisesgomez.taskplannerapiv2.controller.dto.UserDto
 import com.moisesgomez.taskplannerapiv2.data.document.User
 import com.moisesgomez.taskplannerapiv2.data.repository.UserRepository
+import com.moisesgomez.taskplannerapiv2.exception.UserNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -16,7 +17,7 @@ class UserServiceMongoDb(
     }
 
     override fun update(userId: String, userDto: UserDto): User {
-        val user = userRepository.findById(userId).get()
+        val user = userRepository.findById(userId).orElseThrow { UserNotFoundException() }
         user.update(userDto)
         return userRepository.save(user)
     }
