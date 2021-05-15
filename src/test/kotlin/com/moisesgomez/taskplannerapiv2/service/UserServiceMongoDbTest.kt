@@ -51,6 +51,7 @@ class UserServiceMongoDbTest {
         }
     }
 
+    // Comment for Heroku integration
     @Test
     fun updateFoundUserIsSavedTest() {
         val userId = "1234"
