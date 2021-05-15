@@ -32,13 +32,13 @@ class UserServiceMongoDbTest {
         userServiceMongoDb = UserServiceMongoDb(userRepository)
     }
 
-    /*@Test
+    @Test
     fun saveUsersCallsSavesOnRepositoryTest() {
         val userDto = UserDto("1", "Full Name", "mail@mail.com", "123456")
         `when`(userRepository.save(any())).thenReturn(User(userDto))
         userServiceMongoDb.save(userDto)
         verify(userRepository)!!.save(any())
-    }*/
+    }
 
     @Test
     fun updateNotFoundUserTest() {
